@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SWURLProtocol.h"
+
 
 @interface AppDelegate ()
 
@@ -16,7 +18,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [NSURLProtocol registerClass:[SWURLProtocol class]];
+    
+    // NSURLSession例子
+
+
+    
     return YES;
 }
 

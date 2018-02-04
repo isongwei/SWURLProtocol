@@ -13,6 +13,7 @@
 		F951070C1F3989D20009B5C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F951070A1F3989D20009B5C2 /* Main.storyboard */; };
 		F951070E1F3989D20009B5C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F951070D1F3989D20009B5C2 /* Assets.xcassets */; };
 		F95107111F3989D20009B5C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F951070F1F3989D20009B5C2 /* LaunchScreen.storyboard */; };
+		F951071A1F398A000009B5C2 /* SWURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F95107191F398A000009B5C2 /* SWURLProtocol.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		F951070D1F3989D20009B5C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F95107101F3989D20009B5C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F95107121F3989D20009B5C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F95107181F398A000009B5C2 /* SWURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWURLProtocol.h; sourceTree = "<group>"; };
+		F95107191F398A000009B5C2 /* SWURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWURLProtocol.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				F95107051F3989D20009B5C2 /* AppDelegate.m */,
 				F95107071F3989D20009B5C2 /* ViewController.h */,
 				F95107081F3989D20009B5C2 /* ViewController.m */,
+				F95107181F398A000009B5C2 /* SWURLProtocol.h */,
+				F95107191F398A000009B5C2 /* SWURLProtocol.m */,
 				F951070A1F3989D20009B5C2 /* Main.storyboard */,
 				F951070D1F3989D20009B5C2 /* Assets.xcassets */,
 				F951070F1F3989D20009B5C2 /* LaunchScreen.storyboard */,
@@ -151,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F95107091F3989D20009B5C2 /* ViewController.m in Sources */,
+				F951071A1F398A000009B5C2 /* SWURLProtocol.m in Sources */,
 				F95107061F3989D20009B5C2 /* AppDelegate.m in Sources */,
 				F95107031F3989D20009B5C2 /* main.m in Sources */,
 			);
