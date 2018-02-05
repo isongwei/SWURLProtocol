@@ -21,10 +21,6 @@
     
     [NSURLProtocol registerClass:[SWURLProtocol class]];
     
-    // NSURLSession例子
-
-
-    
     return YES;
 }
 

@@ -26,19 +26,60 @@
     [self.view addSubview:_web];
     
     
-//    WKWebView * wk = [[WKWebView alloc]initWithFrame:(CGRectMake(0, 400, 375, 375))];
-//
-//    [wk loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
-//
-//    [self.view addSubview:wk];
+    
+
+    
+
     
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (IBAction)getM:(id)sender {
+    NSURL  *url= [NSURL URLWithString:@"https://www.hellosong.cc/test.php"];
+    NSURLSession * session = [NSURLSession sharedSession];
     
-    [_web reload];
+    //创建请求
+    //NSURLSessionDataTask 发送 GET 请求
     
+    NSURLSessionDataTask * dataTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        //解析服务器返回的数据
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        //默认在子线程中解析数据
+        NSLog(@"%@", [NSThread currentThread]);
+        
+    }];
     
+    //发送请求（执行Task）
+    [dataTask resume];
+    
+}
+
+
+- (IBAction)postM:(id)sender {
+    
+    NSURL  *url= [NSURL URLWithString:@"https://www.hellosong.cc/test.php"];
+    
+    //创建可变请求对象
+    NSMutableURLRequest *requestM = [NSMutableURLRequest requestWithURL:url];
+    //修改请求方法
+    requestM.HTTPMethod = @"POST";
+    
+    //设置请求体
+    requestM.HTTPBody = [@"username=520&pwd=520&type=JSON" dataUsingEncoding:NSUTF8StringEncoding];
+    //创建会话对象
+    NSURLSession *session = [NSURLSession sharedSession];
+    //创建请求 Task
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:requestM completionHandler:
+                                      ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                          
+                                          //解析返回的数据
+                                          NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                          
+                                          //默认在子线程中解析数据
+                                          NSLog(@"%@", [NSThread currentThread]);
+                                      }];
+    //发送请求
+    [dataTask resume];
 }
 
 
