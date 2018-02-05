@@ -8,6 +8,7 @@
 
 #import "SWURLProtocol.h"
 
+
 #define ProtocolKey @"SWURLProtocolKey"
 
 @interface SWURLProtocol ()<NSURLSessionDataDelegate>
@@ -40,8 +41,6 @@
  */
 +(BOOL)canInitWithRequest:(NSURLRequest *)request{
     
-
-    
     
 //    return  NO;
     //看看是否处理过了
@@ -54,7 +53,6 @@
     if ([scheme caseInsensitiveCompare:@"http"] == NSOrderedSame
         || [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame
         ) {
-        
         
         return YES;
     }
@@ -70,7 +68,6 @@
  */
 +(NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
-
     
     NSMutableURLRequest *mutableReqeust = [request mutableCopy];
     mutableReqeust = [self redirectHostInRequset:mutableReqeust];
@@ -95,7 +92,7 @@
     
     //采取定向
     //替换成需要的ip
-    return request;
+//    return request;
     NSString * ip = @"www.hellosong.cc";
     NSString * urlString = [originUrlString stringByReplacingCharactersInRange:hostRange withString:ip];
     request.URL = [NSURL URLWithString:urlString];
@@ -110,11 +107,11 @@
  通常只需要调用父类的实现。
 
  */
-+(BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b{
-    
-    return [super requestIsCacheEquivalent:a toRequest:b];
-    
-}
+//+(BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b{
+//
+//    return [super requestIsCacheEquivalent:a toRequest:b];
+//
+//}
 
 
 
@@ -137,8 +134,9 @@
     //表示request已经处理过了 防止无限循环
     [NSURLProtocol setProperty:@(YES) forKey:ProtocolKey inRequest:mRequest];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+
     
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    configuration.protocolClasses = @[ [SWURLProtocol class] ];
     self.session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionTask *task = [self.session dataTaskWithRequest:mRequest];

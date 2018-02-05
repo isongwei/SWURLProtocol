@@ -10,7 +10,8 @@
 #import <WebKit/WebKit.h>
 @interface ViewController ()
 
-@property (strong, nonatomic) UIWebView *web;
+@property (strong, nonatomic) IBOutlet UIWebView *web;
+@property (strong, nonatomic)  WKWebView *wk;
 
 @end
 
@@ -19,13 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _web = [[UIWebView alloc]initWithFrame:(CGRectMake(0, 20, 375, 375))];
     
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    if (@available(iOS 11.0, *)) {
+        self.web.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     [_web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
     
-    [self.view addSubview:_web];
     
-    
+    _wk = [[WKWebView alloc]initWithFrame:(CGRectMake(0, CGRectGetMaxY(_web.frame)+5, 375, 667-CGRectGetMaxY(_web.frame)-60))];
+    [_wk loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+    [self.view addSubview:_wk];
     
 
     

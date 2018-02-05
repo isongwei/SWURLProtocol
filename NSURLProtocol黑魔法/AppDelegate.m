@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SWURLProtocol.h"
-
+#import "NSURLProtocol+WebKitSupport.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [NSURLProtocol registerClass:[SWURLProtocol class]];
+    for (NSString* scheme in @[@"http", @"https"]) {
+        if (1) {
+            [NSURLProtocol wk_registerScheme:scheme];
+        } else {
+            [NSURLProtocol wk_unregisterScheme:scheme];
+        }
+    }
     
     return YES;
 }

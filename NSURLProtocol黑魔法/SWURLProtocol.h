@@ -17,8 +17,6 @@
      [NSURLProtocol registerClass:[SWURLProtocol class]];
      return YES;
      }
-     
-
      */
 
 @interface SWURLProtocol : NSURLProtocol
