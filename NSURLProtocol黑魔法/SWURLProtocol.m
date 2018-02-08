@@ -71,18 +71,14 @@
     
     NSMutableURLRequest *mutableReqeust = [request mutableCopy];
     mutableReqeust = [self redirectHostInRequset:mutableReqeust];
-//    [NSURLProtocol setProperty:@(YES) forKey:ProtocolKey inRequest:mutableReqeust];
     return mutableReqeust;
 
 }
 +(NSMutableURLRequest*)redirectHostInRequset:(NSMutableURLRequest*)request
 {
-    
-    
     if ([request.URL host].length == 0) {
         return request;
     }
-    
     NSString * originUrlString = [request.URL absoluteString];
     NSString * originHostString = [request.URL host];
     NSRange hostRange =  [originUrlString rangeOfString:originHostString];
@@ -93,7 +89,7 @@
     //采取定向
     //替换成需要的ip
 //    return request;
-    NSString * ip = @"www.hellosong.cc";
+    NSString * ip = @"www.xxx.com";
     NSString * urlString = [originUrlString stringByReplacingCharactersInRange:hostRange withString:ip];
     request.URL = [NSURL URLWithString:urlString];
     return  request;
@@ -107,11 +103,11 @@
  通常只需要调用父类的实现。
 
  */
-//+(BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b{
-//
-//    return [super requestIsCacheEquivalent:a toRequest:b];
-//
-//}
++(BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b{
+
+    return [super requestIsCacheEquivalent:a toRequest:b];
+
+}
 
 
 
@@ -134,10 +130,7 @@
     //表示request已经处理过了 防止无限循环
     [NSURLProtocol setProperty:@(YES) forKey:ProtocolKey inRequest:mRequest];
     
-
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    configuration.protocolClasses = @[ [SWURLProtocol class] ];
     self.session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionTask *task = [self.session dataTaskWithRequest:mRequest];
     [task resume];
